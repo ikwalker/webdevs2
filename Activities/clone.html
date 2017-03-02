@@ -4,10 +4,13 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width">
         <title>repl.it</title>
+        <style>
+          .template {display: none;}
+        </style>
 
     </head>
     <body>
-      <div class="towedVehicle template">
+      <div id="towedVehicle" class="towedVehicle template">
         <h2 class="plate"></h2>
         <div>
           Inventory Number: <span class="inventory_number"></span><br>
@@ -19,7 +22,6 @@
       </div>
       
       <div id="results">
-        
         
       </div>
 
@@ -37,16 +39,25 @@
           var clone;
           
           $.each(data, function (i,v) {
+            
             clone = $("#towedVehicle").clone();
-            clone.find(".plate").text(v.plate);
+            console.log(clone);
+            
+            clone.removeClass("template");
+            console.log(clone);
+            clone.attr("id", v.plate);
+            
+            clone.find(".plate").text(v.plate)
             clone.find(".color").text(v.color);
-            clone.find(".tow_date").text(v.tow_date);
+            
+            console.log(clone);
+            clone.find(".inventory_number").text(v.inventory_number);
             clone.find(".tow_facility_phone").text(v.tow_facility_phone);
             clone.find(".tow_date").text(v.tow_date);
             clone.find(".towed_to_address").text(v.towed_to_address);
             clone.find(".mapLink").attr("href", "https://www.google.com/maps/place/" + v.towed_to_address);
             $("#results").append(clone);
-          });
+          })
 
         }).fail(function(err) {
           throw err;

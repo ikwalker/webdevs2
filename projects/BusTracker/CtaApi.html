@@ -1,21 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8"> 
   <title>CtaApi</title>
   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  <style>
+    
+  </style>
 </head>
 <body>
-
- 
+ <p>Press the button to see buses near Lane Tech</p>
+ <button id="submit">View Buses Near Lane Tech</button>
+ <div id="results"></div>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
       <script>
-        $(function() {
-          
+      $("#results").hide()
+      $("#submit").click(function() {
+         $("#results").empty().show() 
           
           var apiPassThruUrl = "https://polar-garden-75406.herokuapp.com/apiPassThru.php";
           
-          var apiEndpoint = "http://ctabustracker.com/bustime/api/v2/getroutes";
+          var apiEndpoint = "http://ctabustracker.com/bustime/api/v2/getpredictions";
           
           
           $.ajax({
@@ -24,19 +29,22 @@
               method: 'GET',
               data: {"apiEndpoint": apiEndpoint,
                       "key" : "YRyyQ5ibjDfRiZ5pZ9rzqmKiM",
-                      "format":"json"}
+                      "format":"json",
+                      "rt":"49,52,152",
+                      "stpid":"8417,12527"
+              }
             }).done (function (data) {
               console.log(data);
-              $("body").append("<h1>Bus Routes</h1>");
+              $("#results").append("<h1>Bus Routes</h1>");
              
               $.each(data["bustime-response"]["routes"], function(i,v) {
-                  $("body").append("Route #" + v.rt + ", " + v.rtnm + "<br>");
-                
-              })
+                  $("#results").append("Route #" + v.rt + ", " + v.rtnm + "Scheduled Arrival Time" + v.prd + "Time left until arrival" + v.prdctdn +  "<br>");
+              });
 
             });
         });
-            
+           
+         
   
 </script>
  
