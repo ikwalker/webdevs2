@@ -12,41 +12,7 @@
 
   <style> 
 
-  #rt152{
-
-    background-color: dodgerblue;
-
-    border: solid black 1px;
-
-    padding: 5px;
-
-    border-radius:2px;
-
-  }
-
-  #rt49{
-
-    background-color: dodgerblue;
-
-    border: solid black 1px;
-
-    padding: 5px;
-
-    border-radius:2px;
-
-  }
-
-  #rtX49{
-
-    background-color: dodgerblue;
-
-    border: solid black 1px;
-
-    padding: 5px;
-
-    border-radius:2px;
-
-  }
+  
 
   #rt52{
 
@@ -82,11 +48,7 @@
  
  <br>
  
- <div id="rt152"></div>
  
- <div id="rtX49"></div>
- 
- <div id="rt49"></div>
  
  <div id="rt52"></div>
      
@@ -100,21 +62,12 @@
      
      
      
-      $("#rt49").hide()
-      
-      $("#rtX49").hide()
-      
-      $("#rt152").hide()
       
       $("#rt52").hide()
       
       $("#submit").click(function() {
          
-         $("#rt49").empty().show()
          
-         $("#rtX49").empty().show()
-         
-         $("#rt152").empty().show()
          
          $("#rt52").empty().show()
           
@@ -146,9 +99,9 @@
              
                       "format":"json",
              
-                      "rt":"49,X49,152,52",
+                      "rt":"52",
              
-                      "stpid":"8417,12527,15231"
+                      "stpid":"3185"
               }
            
            
@@ -157,11 +110,7 @@
              
               console.log(data);
              
-             $("#rt49").append("<h2>Bus 49</h2>")
              
-             $("#rtX49").append("<h2>Bus X49</h2>")
-             
-             $("#rt152").append("<h2>Bus 152</h2>")
              
              $("#rt52").append("<h2>Bus 52</h2>")
               

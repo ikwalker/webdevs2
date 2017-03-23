@@ -1,0 +1,15 @@
+{
+  "short_name": "3 Page App",
+  "name": "3 Page App",
+  "icons": [
+    {
+      "src":"images/LT.png",
+      "sizes": "192/192",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/?utm_source=homescreen",
+  "background_color": "#ffffff",
+  "Theme_color": "#536878",
+  "display": "standalone"
+}
