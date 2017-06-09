@@ -1,39 +1,68 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-  <head>
-      <!-- Include Dexie -->
-      <script src="https://unpkg.com/dexie@latest/dist/dexie.js"></script>
+    <head>
+        <title> </title>
+    </head>
+    <body>
 
-      <script>
-          //
-          // Define your database
-          //
-          var db = new Dexie("friend_database");
-          db.version(1).stores({
-              friends: 'name,shoeSize'
-          });
+    <style>
+  
+    canvas {
+  
+  border:1px solid #d3d3d3;background-color:white;
+        
+      }
+ 
+ 
+    </style>
+   
+   <canvas id="myCanvas" width="1366" height="768" style="background: url('https://techjourney.net/media/2015/07/xp-bliss.jpg')">
+</canvas>
+   
+   
+   
+    <script>
+      
+      
+      //create a reference to the canvas element
+            var canvas = document.getElementById("myCanvas");
+            
+            //create a reference to the drawing object
+            var ctx = canvas.getContext("2d");
+            
+            var circleX = 100;
+            
+            ctx.beginPath();
+            ctx.arc(circleX,100,20,0,2*Math.PI);
+            ctx.fill();
+            
+            
+            document.addEventListener("keydown", moveCircle )
+            
+            function moveCircle (e) {
+                //console.log(e);
+                ctx.clearRect(0,0,canvas.width,canvas.height);
+                
+                if (e.keyCode == 39) {
+                    circleX = circleX + 10;
+                }
 
-          //
-          // Put some data into it
-          //
-          db.friends.put({name: "Isaiah", shoeSize: 10}).then (function(){
-              //
-              // Then when data is stored, read from it
-              //
-              return db.friends.get('Isaiah');
-          }).then(function (friend) {
-              //
-              // Display the result
-              //
-              alert ("Isaiah wears a size " + friend.shoeSize + " in shoes");
-          }).catch(function(error) {
-             //
-             // Finally don't forget to catch any error
-             // that could have happened anywhere in the
-             // code blocks above.
-             //
-             alert ("Ooops: " + error);
-          });
-      </script>
-  </head>
+                if (e.keyCode == 37) {
+                    circleX = circleX - 10;
+                }
+                
+               
+               
+               ctx.beginPath();
+                ctx.arc(circleX,100,20,0,2*Math.PI);
+                ctx.fill();
+            }
+      
+      
+      
+    </script>
+    
+    
+    
+    </body>
 </html>
